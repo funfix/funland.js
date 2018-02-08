@@ -1,0 +1,13 @@
+.yarnclean
+node_modules
+coverage
+.nyc_output
+.DS_Store
+*.log
+.vscode
+.idea
+/dist/
+.awcache
+dist
+compiled
+.rpt2_cache
