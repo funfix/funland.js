@@ -11,6 +11,18 @@
 import type { HK } from "../../src"
 import { Setoid, Functor, Apply, Applicative, Chain } from "../../src"
 
+type Either<L, R> = Left<L> | Right<R>
+type Left<L> = { tag: "left", value: L }
+type Right<R> = { tag: "right", value: R }
+
+function left<L, R>(value: L): Either<L, R> {
+  return { tag: "left", value }
+}
+
+function right<L, R>(value: R): Either<L, R> {
+  return { tag: "right", value }
+}
+
 type BoxURI = <U, L, A>(x: [U, L, A]) => Box<A>
 type BoxK<A> = HK<BoxURI, A>
 
@@ -44,5 +56,14 @@ class BoxApplicative extends BoxApply implements Applicative<BoxURI> {
 class BoxChain extends BoxApply implements Chain<BoxURI> {
   chain<A, B>(fa: BoxK<A>, f: (a: A) => BoxK<B>): BoxK<B> {
     return f((fa : any).value)
+  }
+
+  chainRec<A, B>(a: A, f: <C>(next: (a: A) => C, done: (b: B) => C, a: A) => BoxK<C>): BoxK<B> {
+    const ff = (a: A) => f(l => left(l), b => right(b), a)
+    let cursor: Either<A, B> = left(a)
+    while (cursor.tag !== "right") {
+      cursor = (ff(cursor.value) : any).value
+    }
+    return new Box(cursor.value)
   }
 }
