@@ -9,7 +9,7 @@
 /* @flow */
 
 import type { HK } from "../../src"
-import { Setoid, Functor, Apply, Applicative, Chain } from "../../src"
+import { Setoid, Functor, Apply, Applicative, Chain, Monad, ChainRec } from "../../src"
 
 type Either<L, R> = Left<L> | Right<R>
 type Left<L> = { tag: "left", value: L }
@@ -36,7 +36,7 @@ class BoxFunctor implements Setoid<Box<any>>, Functor<BoxURI> {
     return (x : Box<any>).value === (y : Box<any>).value
   }
 
-  map<A, B>(fa: BoxK<A>, f: (a: A) => B): Box<B> {
+  map<A, B>(f: (a: A) => B, fa: BoxK<A>): Box<B> {
     return new Box(f((fa : any).value))
   }
 }
@@ -54,16 +54,26 @@ class BoxApplicative extends BoxApply implements Applicative<BoxURI> {
 }
 
 class BoxChain extends BoxApply implements Chain<BoxURI> {
-  chain<A, B>(fa: BoxK<A>, f: (a: A) => BoxK<B>): BoxK<B> {
+  chain<A, B>(f: (a: A) => BoxK<B>, fa: BoxK<A>): BoxK<B> {
     return f((fa : any).value)
   }
+}
 
-  chainRec<A, B>(a: A, f: <C>(next: (a: A) => C, done: (b: B) => C, a: A) => BoxK<C>): BoxK<B> {
-    const ff = (a: A) => f(l => left(l), b => right(b), a)
+class BoxChainRec extends BoxChain implements ChainRec<BoxURI> {
+  chainRec<A, B>(
+    f: (next: (a: A) => Either<A, B>, done: (b: B) => Either<A, B>, a: A) => BoxK<Either<A, B>>,
+    a: A): BoxK<B> {
+
     let cursor: Either<A, B> = left(a)
-    while (cursor.tag !== "right") {
-      cursor = (ff(cursor.value) : any).value
+    while (cursor.tag === "left") {
+      cursor = (f(left, right, cursor.value) : any).value
     }
     return new Box(cursor.value)
+  }
+}
+
+class BoxMonad extends BoxApplicative implements Monad<BoxURI> {
+  chain<A, B>(f: (a: A) => BoxK<B>, fa: BoxK<A>): BoxK<B> {
+    return f((fa : any).value)
   }
 }

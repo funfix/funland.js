@@ -25,7 +25,9 @@ type Types =
   types.Functor<"box"> &
   types.Apply<"box"> &
   types.Applicative<"box"> &
-  types.Chain<"box">
+  types.Chain<"box"> &
+  types.ChainRec<"box"> &
+  types.Monad<"box">
 
 function left<L, R>(value: L): Either<L, R> {
   return { tag: "left", value }
@@ -38,7 +40,7 @@ function right<L, R>(value: R): Either<L, R> {
 const t: Types = {
   equals: (x, y) =>
     (x as Box<any>).value === (y as Box<any>).value,
-  map: <A, B>(fa: HK<"box", A>, f: (a: A) => B) =>
+  map: <A, B>(f: (a: A) => B, fa: HK<"box", A>) =>
     new Box(f((fa as Box<A>).value)),
   ap: <A, B>(ff: HK<"box", (a: A) => B>, fa: HK<"box", A>) => {
     const f = (ff as Box<(a: A) => B>).value
@@ -48,14 +50,16 @@ const t: Types = {
   of<A>(a: A) {
     return new Box(a)
   },
-  chain<A, B>(fa: HK<"box", A>, f: (a: A) => HK<"box", B>) {
+  chain<A, B>(f: (a: A) => HK<"box", B>, fa: HK<"box", A>) {
     return f((fa as Box<A>).value)
   },
-  chainRec<A, B>(f: <C>(next: (a: A) => C, done: (b: B) => C, a: A) => HK<"box", C>, a: A) {
-    const ff = (a: A) => f(l => left<A, B>(l), b => right<A, B>(b), a)
-    let cursor = left<A, B>(a)
-    while (cursor.tag !== "right") {
-      cursor = (ff(cursor.value) as Box<Either<A, B>>).value
+  chainRec<A, B>(
+    f: (next: (a: A) => Either<A, B>, done: (b: B) => Either<A, B>, a: A) => HK<"box", Either<A, B>>,
+    a: A) {
+
+    let cursor: Either<A, B> = left(a)
+    while (cursor.tag === "left") {
+      cursor = (f(left, right, cursor.value) as Box<Either<A, B>>).value
     }
     return new Box(cursor.value)
   }
@@ -70,7 +74,7 @@ describe("type tests", () => {
   })
 
   it("functor", () => {
-    const fb = t.map(new Box(1), x => x + 1)
+    const fb = t.map(x => x + 1, new Box(1))
     assert.equal((fb as Box<number>).value, 2)
   })
 
@@ -85,15 +89,17 @@ describe("type tests", () => {
   })
 
   it("chain", () => {
-    const fb = t.chain(new Box(1), a => new Box(a + 1))
+    const fb = t.chain(a => new Box(a + 1), new Box(1))
     assert.equal((fb as Box<number>).value, 2)
   })
 
   it("chainRec", () => {
-    const fb = t.chainRec<number, number>(
-      (next, done, a) => new Box(a < 10 ? next(a + 1) : done(a)),
-      0
-    )
+    const fb = t.chainRec(
+      (next, done, a) => {
+        return new Box(a < 10 ? next(a + 1) : done(a))
+      },
+      0)
+
     assert.equal((fb as Box<number>).value, 10)
   })
 })

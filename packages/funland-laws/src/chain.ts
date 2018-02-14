@@ -17,9 +17,9 @@ import { ApplyLaws } from "./apply"
  * `Chain` inherits the laws of `Apply` and in addition must obey:
  *
  * 1. Associativity:
- *   `F.chain(F.chain(fa, f), g) <-> F.chain(fa, a => F.chain(f(a), g))`
+ *   `F.chain(g, F.chain(f, fa)) <-> F.chain(x => F.chain(g, f(x)), fa)`
  * 2. Apply's `ap` can be derived:
- *    `F.ap = (fab, fa) => F.chain(fab, f => F.map(fa, f))`
+ *    `(ff, fa) => F.chain(f => F.map(f, fa), ff)`
  */
 export class ChainLaws<F> extends ApplyLaws<F> {
   constructor(public readonly F: Chain<F>) {
@@ -29,16 +29,16 @@ export class ChainLaws<F> extends ApplyLaws<F> {
   chainAssociativity<A, B, C>(fa: HK<F, A>, f: (a: A) => HK<F, B>, g: (b: B) => HK<F, C>): Equiv<HK<F, C>> {
     const F = this.F
     return Equiv.of(
-      F.chain(F.chain(fa, f), g),
-      F.chain(fa, a => F.chain(f(a), g))
+      F.chain(g, F.chain(f, fa)),
+      F.chain(x => F.chain(g, f(x)), fa)
     )
   }
 
-  chainConsistentApply<A, B>(fa: HK<F, A>, fab: HK<F, (a: A) => B>): Equiv<HK<F, B>> {
+  chainConsistentApply<A, B>(ff: HK<F, (a: A) => B>, fa: HK<F, A>): Equiv<HK<F, B>> {
     const F = this.F
     return Equiv.of(
-      F.ap(fab, fa),
-      F.chain(fab, f => F.map(fa, f))
+      F.ap(ff, fa),
+      F.chain(f => F.map(f, fa), ff)
     )
   }
 }

@@ -10,7 +10,7 @@ import { HK } from "./kinds"
 import { Apply } from "./apply"
 
 /**
- * The `Chain` type class is a lightweight {@link Monad}.
+ * The `Chain` type-class is a lightweight {@link Monad}.
  *
  * It exposes [chain]{@link Chain.chain}, which allows to have a
  * value in a context (`F<A>`) and then feed that into a function that
@@ -25,24 +25,16 @@ import { Apply } from "./apply"
  *
  * In addition to `Apply`'s laws, `Chain` instances must obey these laws:
  *
- * 1. Associativity: `M.chain(M.chain(u, f), g) <-> M.chain(u, x => M.chain(f(x), g))`
+ * 1. Associativity:
+ *   `F.chain(g, F.chain(f, fa)) <-> F.chain(x => F.chain(g, f(x)), fa)`
  * 2. Apply's `ap` can be derived:
- *    `A.ap = (uf, ux) => A.chain(uf, f => A.map(f, ux))`
+ *    `(ff, fa) => F.chain(f => F.map(f, fa), ff)`
  *
- * Equivalent with the `Chain` and `ChainRec` type classes in the
- * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) specification.
+ * Equivalent with the `Chain` type-class in the
+ * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) and
+ * [static-land](https://github.com/rpominov/static-land/)
+ * specifications.
  */
 export interface Chain<F> extends Apply<F> {
-  chain<A, B>(fa: HK<F, A>, f: (a: A) => HK<F, B>): HK<F, B>
-
-  /**
-   * Keeps calling `f` until a `done(b)` is returned.
-   *
-   * Based on Phil Freeman's
-   * [Stack Safety for Free]{@link http://functorial.com/stack-safety-for-free/index.pdf}.
-   *
-   * Implementations of this function should use constant stack space
-   * relative to `f`.
-   */
-  chainRec<A, B>(a: A, f: <C>(next: (a: A) => C, done: (b: B) => C, a: A) => HK<F, C>): HK<F, B>
+  chain<A, B>(f: (a: A) => HK<F, B>, fa: HK<F, A>): HK<F, B>
 }

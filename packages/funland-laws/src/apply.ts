@@ -17,7 +17,7 @@ import { FunctorLaws } from "./functor"
  * `Apply` inherits the laws of `Functor` and in addition must obey:
  *
  * 1. Composition:
- *   `F.ap(F.ap(F.map(fbc, f => g => x => f(g(x))), fab), fa) <-> F.ap(fbc, F.ap(fab, fa))`
+ *   `F.ap(F.ap(F.map(f => g => x => f(g(x)), fbc), fab), fa) <-> F.ap(fbc, F.ap(fab, fa))`
  */
 export class ApplyLaws<F> extends FunctorLaws<F> {
   constructor(public readonly F: Apply<F>) {
@@ -31,8 +31,8 @@ export class ApplyLaws<F> extends FunctorLaws<F> {
     )
 
     return Equiv.of(
-      F.ap(fbc, F.ap(fab, fa)),
-      F.ap(F.ap(F.map(fbc, compose), fab), fa)
+      F.ap(F.ap(F.map(compose, fbc), fab), fa),
+      F.ap(fbc, F.ap(fab, fa))
     )
   }
 }

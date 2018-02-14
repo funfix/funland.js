@@ -12,6 +12,5 @@ import type { HK } from "./kinds"
 import { Apply } from "./apply"
 
 export interface Chain<F> extends Apply<F> {
-  chain<A, B>(fa: HK<F, A>, f: (a: A) => HK<F, B>): HK<F, B>;
-  chainRec<A, B>(a: A, f: <C>(next: (a: A) => C, done: (b: B) => C, a: A) => HK<F, C>): HK<F, B>;
+  chain<A, B>(f: (a: A) => HK<F, B>, fa: HK<F, A>): HK<F, B>;
 }

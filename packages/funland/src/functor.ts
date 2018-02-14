@@ -9,18 +9,20 @@
 import { HK } from "./kinds"
 
 /**
- * The `Functor` is a type class providing the `map` operation that
+ * The `Functor` is a type-class providing the `map` operation that
  * allows lifting an `f` function into the functor context and
  * applying it.
  *
  * Instances must obey these laws:
  *
- * 1. Identity: `F.map(fa, x => x) <-> fa`
- * 2. Composition: `F.map(fa, x => f(g(x))) <-> F.map(F.map(fa, g), f)`
+ * 1. Identity: `F.map(x => x, a) <-> a`
+ * 2. Composition: `F.map(x => f(g(x)), a) <-> F.map(f, F.map(g, a))`
  *
- * Equivalent with the `Functor` type class in the
- * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) specification.
+ * Equivalent with the `Functor` type-class in the
+ * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) and
+ * [static-land](https://github.com/rpominov/static-land/)
+ * specifications.
  */
 export interface Functor<F> {
-  map<A, B>(fa: HK<F, A>, f: (a: A) => B): HK<F, B>
+  map<A, B>(f: (a: A) => B, fa: HK<F, A>): HK<F, B>
 }

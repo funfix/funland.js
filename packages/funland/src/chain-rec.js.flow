@@ -8,8 +8,9 @@
 
 /* @flow */
 
-import type { HK } from "./kinds";
+import type { HK } from "./kinds"
+import { Chain } from "./chain"
 
-export interface Functor<F> {
-  map<A, B>(f: (a: A) => B, fa: HK<F, A>): HK<F, B>;
+export interface ChainRec<F> extends Chain<F> {
+  chainRec<A, B>(f: <C>(next: (a: A) => C, done: (b: B) => C, a: A) => HK<F, C>, a: A): HK<F, B>;
 }

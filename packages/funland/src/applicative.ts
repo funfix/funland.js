@@ -10,7 +10,7 @@ import { HK } from "./kinds"
 import { Apply } from "./apply"
 
 /**
- * `Applicative` functor type class.
+ * `Applicative` functor type-class.
  *
  * Allows application of a function in an Applicative context to a
  * value in an `Applicative` context.
@@ -36,8 +36,10 @@ import { Apply } from "./apply"
  * 3. Interchange: A.ap(u, A.of(y)) <-> A.ap(A.of(f => f(y)), u)
  * 4. Functor's `map` (can be derived): `A.map(f, u) <-> A.ap(A.of(f), u)`
  *
- * Equivalent with the `Applicative` type class in the
- * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) specification.
+ * Equivalent with the `Chain` type-class in the
+ * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) and
+ * [static-land](https://github.com/rpominov/static-land/)
+ * specifications.
  */
 export interface Applicative<F> extends Apply<F> {
   of<A>(a: A): HK<F, A>
