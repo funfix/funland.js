@@ -41,7 +41,7 @@ if (!version && process.env["TRAVIS_BRANCH"] === "master" && process.env["TRAVIS
 }
 
 if (!version) {
-  console.info("Only deploying docs on the master branch and not for pull requests, exiting!")
+  console.info("Only deploying docs for version tags, exiting!")
   process.exit(0)
 }
 
