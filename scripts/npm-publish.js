@@ -23,7 +23,7 @@ if (!process.env["CI"]) {
 }
 
 const branch = process.env["TRAVIS_TAG"]
-const m = branch.match(/^v(\d+\.\d+\.\d+)$/)
+const m = branch.match(/^v(\d+\.\d+(\.\d+)?)$/)
 let version = m && m[1]
 
 if (!version) {
