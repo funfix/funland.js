@@ -27,6 +27,13 @@ Usage of laws mostly makes sense in tests, being built for property-based
 testing, so usage of [jsverify](https://github.com/jsverify/jsverify) is
 recommended, but not required.
 
+### Documentation
+
+API docs are available:
+
+- [funland](http://funland-js.org/api/core/) (core)
+- [funland-laws](http://funland-js.org/api/laws/) (laws)
+
 ### Modules: UMD and ES 2015
 
 The library has been compiled using
