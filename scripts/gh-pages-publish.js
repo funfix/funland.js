@@ -1,10 +1,19 @@
 #!/usr/bin/env node
 /*!
- * Copyright (c) 2018 by The Funland Project Developers.
+ * Copyright (c) 2017 by The Funfix Project Developers.
  * Some rights reserved.
  *
- * Licensed under the MIT License.
- * See LICENSE file in the project root for full license information.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 const { cd, exec, echo } = require("shelljs")
@@ -52,11 +61,11 @@ if (process.env.TMPDIR && existsSync(process.env.TMPDIR)) {
 }
 
 exec(`rm -rf "${destDir}"`)
-exec(`git clone "https://${ghToken}@${repository}" "${destDir}" -b master`)
+exec(`git clone "https://${ghToken}@${repository}" "${destDir}" -b gh-pages`)
 
-exec(`mkdir -p "${destDir}"/docs/archive/`)
-exec(`rm -rf "${destDir}"/docs/archive/${version}`)
-exec(`mkdir -p "${destDir}"/docs/archive/${version}`)
+exec(`mkdir -p "${destDir}"/archive/`)
+exec(`rm -rf "${destDir}"/archive/${version}`)
+exec(`mkdir -p "${destDir}"/archive/${version}`)
 
 for (const p of fs.readdirSync(rootDir)) {
   const dir = path.join(rootDir, p)
@@ -65,14 +74,14 @@ for (const p of fs.readdirSync(rootDir)) {
   const docsDir = path.join(dir, "dist", "docs")
   if (!fs.existsSync(docsDir) || !fs.lstatSync(docsDir).isDirectory()) continue
 
-  const prefixLess = p.replace(/^funfix\-/, '')
-  exec(`rm -rf "${destDir}"/docs/archive/${version}/${prefixLess}`)
-  exec(`cp -rp "${docsDir}" "${destDir}"/docs/archive/${version}/${prefixLess}`)
+  const prefixLess = p.replace(/^funland$/i, 'core').replace(/^funland\-/i, '')
+  exec(`rm -rf "${destDir}"/archive/${version}/${prefixLess}`)
+  exec(`cp -rp "${docsDir}" "${destDir}"/archive/${version}/${prefixLess}`)
 }
 
 if (version !== 'next') {
-  exec(`rm -rf "${destDir}"/docs/api`)
-  exec(`ln -s ./docs/archive/${version} "${destDir}"/docs/api`)
+  exec(`rm -rf "${destDir}"/api`)
+  exec(`ln -s ./archive/${version} "${destDir}"/api`)
 }
 
 cd(destDir)
