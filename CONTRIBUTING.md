@@ -2,11 +2,11 @@
 
 The Funland project welcomes contributions from anybody wishing to participate.
 All code or documentation that is provided must be licensed with the same
-license that Funland is licensed with (Apache 2.0, see LICENSE.txt).
+license that Funland is licensed with (MIT, see LICENSE.txt).
 
 ## General Workflow
 
-1. Make sure you can license your work under Apache 2.0
+1. Make sure you can license your work under MIT
 
 2. Before starting to work, make sure there is a ticket in the issue
    or create one first. It can help accelerate the acceptance process
@@ -42,7 +42,7 @@ license that Funland is licensed with (Apache 2.0, see LICENSE.txt).
 
 ## License
 
-All code must be licensed under the Apache 2.0 license and all files
+All code must be licensed under the MIT license and all files
 must include the following copyright header:
 
 ```

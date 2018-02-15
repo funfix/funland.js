@@ -1,5 +1,11 @@
 # Funland
 
+[![Travis](https://img.shields.io/travis/funfix/funland.svg)](https://travis-ci.org/funfix/funland)
+[![Coverage Status](https://codecov.io/gh/funfix/funland/coverage.svg?branch=master)](https://codecov.io/gh/funfix/funland?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/funfix/funland.svg)](https://greenkeeper.io/)
+[![npm](https://img.shields.io/npm/v/funland.svg)](https://www.npmjs.com/package/funland)
+[![Join chat](https://badges.gitter.im/funfix/funland.svg)](https://gitter.im/funfix/funland?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Funland is a specification of common algebraic structures for JavaScript,
 [TypeScript](https://www.typescriptlang.org/) and [Flow](https://flow.org/),
 based on [Fantasy Land](https://github.com/fantasyland/fantasy-land)
@@ -45,6 +51,18 @@ or [Webpack](https://webpack.js.org/).
 Funland exposes both [TypeScript](https://www.typescriptlang.org/)
 and [Flow](https://flow.org/) type annotations out of the box.
 
+## Contributing
+
+The Funland project welcomes contributions from anybody wishing to
+participate.  All code or documentation that is provided must be
+licensed with the same license that Funland is licensed with (MIT).
+
+Feel free to open an issue if you notice a bug, have an idea for a
+feature, or have a question about the code. Pull requests are also
+gladly accepted. For more information, check out the
+[contributor guide](CONTRIBUTING.md).
+
 ## License
 
 All code in this repository is licensed under the MIT license.  
+See [LICENCE](./LICENSE).
