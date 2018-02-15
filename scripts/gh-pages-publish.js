@@ -49,7 +49,7 @@ console.info(`Version detected: ${version}`)
 const commonDir = path.join(path.dirname(process.argv[1]), "..", "common")
 const rootDir = path.join(commonDir, "..", "packages")
 
-const repository = "github.com/funfix/funland.org.git"
+const repository = "github.com/funfix/funland.git"
 const ghToken = process.env.GH_TOKEN
 
 const destDir = path.join(process.env["TMPDIR"] || ".", `docs-${Math.floor(Math.random() * 100000)}`)
