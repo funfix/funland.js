@@ -31,9 +31,8 @@ import { Apply } from "./apply"
  *    `(ff, fa) => F.chain(f => F.map(f, fa), ff)`
  *
  * Equivalent with the `Chain` type-class in the
- * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) and
  * [static-land](https://github.com/rpominov/static-land/)
- * specifications.
+ * specification.
  */
 export interface Chain<F> extends Apply<F> {
   chain<A, B>(f: (a: A) => HK<F, B>, fa: HK<F, A>): HK<F, B>

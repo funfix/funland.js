@@ -9,13 +9,16 @@
 /**
  * The `Setoid` type defines equality.
  *
+ * Inspired by [Data.Eq](https://hackage.haskell.org/package/base/docs/Data-Eq.html)
+ * from Haskell.
+ *
  * Instances must obey the following laws:
  *
  * 1. Reflexivity: `S.equals(a, a) === true`
  * 2. Symmetry: `S.equals(a, b) === S.equals(b, a)`
  * 3. Transitivity: if `S.equals(a, b)` and `S.equals(b, c)`, then `S.equals(a, c)`
  *
- * Equivalent with the `Setoid` specification in the
+ * Equivalent with the `Setoid` type-class in the
  * [static-land]{@link https://github.com/rpominov/static-land/} spec.
  */
 export interface Setoid<A> {

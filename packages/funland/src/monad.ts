@@ -22,12 +22,14 @@ import { ChainRec } from "./chain-rec"
  * 3. Functor's `map` can be derived:
  *    `A.map = (f, u) => A.chain(x => A.of(f(x)), u)`
  *
- * See [Monads for functional programming]{@link http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf},
+ * References:
+ *
+ * - [Monads for functional programming]{@link http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf},
  * by Philip Wadler.
+ * - [Monad class](https://wiki.haskell.org/Monad)
  *
  * Equivalent with the `Monad` type-class in the
- * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) and
  * [static-land](https://github.com/rpominov/static-land/)
- * specifications.
+ * specification.
  */
 export interface Monad<F> extends Applicative<F>, ChainRec<F> {}

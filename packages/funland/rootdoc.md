@@ -47,15 +47,6 @@ The included laws are meant for usage with property-based testing,
 so you'll need something like [jsverify](https://github.com/jsverify/jsverify)
 as a dependency.
 
-```
-npm install funland-laws --save-dev
-
-npm install jsverify --save-dev
-
-# For jsverify types (for TypeScript):
-npm install @types/jsverify --save-dev
-```
-
 And then you can do something like this:
 
 ```typescript

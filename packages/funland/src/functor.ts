@@ -13,15 +13,16 @@ import { HK } from "./kinds"
  * allows lifting an `f` function into the functor context and
  * applying it.
  *
+ * The name is short for "covariant functor".
+ *
  * Instances must obey these laws:
  *
  * 1. Identity: `F.map(x => x, a) <-> a`
  * 2. Composition: `F.map(x => f(g(x)), a) <-> F.map(f, F.map(g, a))`
  *
  * Equivalent with the `Functor` type-class in the
- * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) and
  * [static-land](https://github.com/rpominov/static-land/)
- * specifications.
+ * specification.
  */
 export interface Functor<F> {
   map<A, B>(f: (a: A) => B, fa: HK<F, A>): HK<F, B>

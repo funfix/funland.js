@@ -17,9 +17,8 @@ import { Chain } from "./chain"
  * [[http://functorial.com/stack-safety-for-free/index.pdf Stack Safety for Free]].
  *
  * Equivalent with the `ChainRec` type-class in the
- * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) and
  * [static-land](https://github.com/rpominov/static-land/)
- * specifications.
+ * specification.
  */
 export interface ChainRec<F> extends Chain<F> {
   chainRec<A, B>(f: <C>(next: (a: A) => C, done: (b: B) => C, a: A) => HK<F, C>, a: A): HK<F, B>

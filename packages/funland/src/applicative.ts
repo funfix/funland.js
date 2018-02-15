@@ -37,9 +37,8 @@ import { Apply } from "./apply"
  * 4. Functor's `map` (can be derived): `A.map(f, u) <-> A.ap(A.of(f), u)`
  *
  * Equivalent with the `Chain` type-class in the
- * [Fantasy-Land](https://github.com/fantasyland/fantasy-land) and
  * [static-land](https://github.com/rpominov/static-land/)
- * specifications.
+ * specification.
  */
 export interface Applicative<F> extends Apply<F> {
   of<A>(a: A): HK<F, A>

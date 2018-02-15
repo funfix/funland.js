@@ -31,8 +31,8 @@ recommended, but not required.
 
 API docs:
 
-- [funland](https://funland-js.org/api/core/) (core)
-- [funland-laws](https://funland-js.org/api/laws/) (laws)
+- [funland](../core/) (core)
+- [funland-laws](.) (laws)
 
 Exposed type classes:
 
@@ -49,15 +49,6 @@ Exposed type classes:
 The included laws are meant for usage with property-based testing,
 so you'll need something like [jsverify](https://github.com/jsverify/jsverify)
 as a dependency.
-
-```
-npm install funland-laws --save-dev
-
-npm install jsverify --save-dev
-
-# For jsverify types (for TypeScript):
-npm install @types/jsverify --save-dev
-```
 
 And then you can do something like this:
 

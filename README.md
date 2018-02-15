@@ -53,7 +53,7 @@ The included laws are meant for usage with property-based testing,
 so you'll need something like [jsverify](https://github.com/jsverify/jsverify)
 as a dependency.
 
-```
+```sh
 npm install funland-laws --save-dev
 
 npm install jsverify --save-dev
