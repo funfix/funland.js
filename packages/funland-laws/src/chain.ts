@@ -12,7 +12,7 @@ import { ApplyLaws } from "./apply"
 
 /**
  * Type-class laws for `Chain`, as defined in the `funland`
- * sub-project and in the `static-land` spec.
+ * sub-project, mirroring the `static-land` spec.
  *
  * `Chain` inherits the laws of `Apply` and in addition must obey:
  *

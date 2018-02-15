@@ -73,6 +73,7 @@ class BoxChainRec extends BoxChain implements ChainRec<BoxURI> {
 }
 
 class BoxMonad extends BoxApplicative implements Monad<BoxURI> {
+  chainRec = BoxChainRec.prototype.chainRec
   chain<A, B>(f: (a: A) => BoxK<B>, fa: BoxK<A>): BoxK<B> {
     return f((fa : any).value)
   }

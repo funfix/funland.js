@@ -8,7 +8,7 @@
 
 import * as jv from "jsverify"
 import { HK, Applicative } from "funland"
-import { Equiv, ApplicativeLaws } from "../src"
+import {Equiv, ApplicativeLaws } from "../src"
 import { applyCheck } from "./apply-tests"
 
 export function applicativeCheck<F, A, B, C>(
@@ -19,10 +19,14 @@ export function applicativeCheck<F, A, B, C>(
   genFBtoC: jv.Arbitrary<HK<F, (b: B) => C>>,
   genA: jv.Arbitrary<A>,
   check: <T>(e: Equiv<HK<F, T>>) => boolean,
-  F: Applicative<F>) {
+  F: Applicative<F>,
+  lawsRef?: ApplicativeLaws<F>,
+  includeSuperTypes: boolean = true) {
 
-  const laws = new ApplicativeLaws<F>(F)
-  applyCheck(genFA, genAtoB, genBtoC, genFAtoB, genFBtoC, check, F)
+  const laws = lawsRef || new ApplicativeLaws<F>(F)
+  if (includeSuperTypes) {
+    applyCheck(genFA, genAtoB, genBtoC, genFAtoB, genFBtoC, check, F, laws)
+  }
 
   jv.property("applicative.identity", genFA,
     (fa) => check(laws.applicativeIdentity(fa)))

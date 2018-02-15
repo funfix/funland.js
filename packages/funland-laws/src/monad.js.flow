@@ -1,0 +1,25 @@
+/*!
+ * Copyright (c) 2018 by The Funland Project Developers.
+ * Some rights reserved.
+ *
+ * Licensed under the MIT License.
+ * See LICENSE file in the project root for full license information.
+ */
+
+/* @flow */
+
+import type { HK } from "funland"
+import { Monad } from "funland"
+import { Equiv } from "./equiv"
+import { ApplicativeLaws } from "./applicative"
+
+declare export class MonadLaws<F> extends ApplicativeLaws<F> {
+  +F: Monad<F>;
+  monadLeftIdentity<A, B>(a: A, f: (a: A) => HK<F, B>): Equiv<HK<F, B>>;
+  monadRightIdentity<A, B>(fa: HK<F, A>): Equiv<HK<F, A>>;
+  monadMap<A, B>(fa: HK<F, A>, f: (a: A) => B): Equiv<HK<F, B>>;
+  monadChainRecStackSafety(): Equiv<HK<F, number>>;
+  chainAssociativity<A, B, C>(fa: HK<F, A>, f: (a: A) => HK<F, B>, g: (b: B) => HK<F, C>): Equiv<HK<F, C>>;
+  chainConsistentApply<A, B>(ff: HK<F, (a: A) => B>, fa: HK<F, A>): Equiv<HK<F, B>>;
+  chainRecConsistency<A>(a: A, f: (a: A) => HK<F, A>): Equiv<HK<F, A>>;
+}

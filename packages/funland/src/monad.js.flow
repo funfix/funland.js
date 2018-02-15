@@ -9,6 +9,6 @@
 /* @flow */
 
 import { Applicative } from "./applicative"
-import { Chain } from "./chain"
+import { ChainRec } from "./chain-rec"
 
-export interface Monad<F> extends Applicative<F>, Chain<F> {}
+export interface Monad<F> extends Applicative<F>, ChainRec<F> {}

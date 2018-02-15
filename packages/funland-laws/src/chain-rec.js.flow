@@ -1,0 +1,18 @@
+/*!
+ * Copyright (c) 2018 by The Funland Project Developers.
+ * Some rights reserved.
+ *
+ * Licensed under the MIT License.
+ * See LICENSE file in the project root for full license information.
+ */
+
+import type { HK } from "funland"
+import { ChainRec } from "funland"
+import { Equiv } from "./equiv"
+import { ChainLaws } from "./chain"
+
+declare export class ChainRecLaws<F> extends ChainLaws<F> {
+  +F: ChainRec<F>;
+  constructor(F: ChainRec<F>): ChainRecLaws<F>;
+  chainRecConsistency<A>(a: A, f: (a: A) => HK<F, A>): Equiv<HK<F, A>>;
+}

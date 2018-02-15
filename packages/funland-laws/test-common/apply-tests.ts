@@ -18,10 +18,14 @@ export function applyCheck<F, A, B, C>(
   genFAtoB: jv.Arbitrary<HK<F, (a: A) => B>>,
   genFBtoC: jv.Arbitrary<HK<F, (b: B) => C>>,
   check: <T>(e: Equiv<HK<F, T>>) => boolean,
-  F: Apply<F>) {
+  F: Apply<F>,
+  lawsRef?: ApplyLaws<F>,
+  includeSuperTypes: boolean = true) {
 
-  const laws = new ApplyLaws<F>(F)
-  functorCheck(genFA, genAtoB, genBtoC, check, F)
+  const laws = lawsRef || new ApplyLaws<F>(F)
+  if (includeSuperTypes) {
+    functorCheck(genFA, genAtoB, genBtoC, check, F, laws)
+  }
 
   jv.property("apply.composition", genFA, genFAtoB, genFBtoC,
     (fa, fab, fbc) => check(laws.applyComposition(fa, fab, fbc)))

@@ -53,7 +53,7 @@ export class ApplicativeLaws<F> extends ApplyLaws<F> {
   applicativeMap<A, B>(fa: HK<F, A>, f: (a: A) => B): Equiv<HK<F, B>> {
     const F = this.F
     return Equiv.of(
-      F.map(fa, f),
+      F.map(f, fa),
       F.ap(F.of(f), fa)
     )
   }

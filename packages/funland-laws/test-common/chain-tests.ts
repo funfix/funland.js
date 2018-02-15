@@ -20,14 +20,18 @@ export function chainCheck<F, A, B, C>(
   genFAtoB: jv.Arbitrary<HK<F, (a: A) => B>>,
   genFBtoC: jv.Arbitrary<HK<F, (b: B) => C>>,
   check: <T>(e: Equiv<HK<F, T>>) => boolean,
-  F: Chain<F>) {
+  F: Chain<F>,
+  lawsRef?: ChainLaws<F>,
+  includeSuperTypes: boolean = true) {
 
-  const laws = new ChainLaws<F>(F)
-  applyCheck(genFA, genAtoB, genBtoC, genFAtoB, genFBtoC, check, F)
+  const laws = lawsRef || new ChainLaws<F>(F)
+  if (includeSuperTypes) {
+    applyCheck(genFA, genAtoB, genBtoC, genFAtoB, genFBtoC, check, F, laws)
+  }
 
   jv.property("chain.associativity", genFA, jv.fun(genFB), jv.fun(genFC),
     (fa, fab, fbc) => check(laws.chainAssociativity(fa, fab, fbc)))
 
   jv.property("chain.ap", genFA, genFAtoB,
-    (fa, fab) => check(laws.chainConsistentApply(fa, fab)))
+    (fa, fab) => check(laws.chainConsistentApply(fab, fa)))
 }

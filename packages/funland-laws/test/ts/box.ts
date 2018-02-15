@@ -6,14 +6,34 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { HK, Setoid, Functor, Apply, Applicative } from "funland"
 import * as jv from "jsverify"
-import {Chain} from "funland/dist/chain";
+import {
+  HK,
+  Setoid,
+  Functor,
+  Apply,
+  Applicative,
+  Chain,
+  ChainRec,
+  Monad
+} from "funland"
 
 export class Box<A> implements HK<"box", A> {
   readonly _URI: "box"
   readonly _A: A
   constructor(public readonly value: A) {}
+}
+
+export type Either<L, R> = Left<L> | Right<R>
+export type Left<L> = { tag: "left", value: L }
+export type Right<R> = { tag: "right", value: R }
+
+export function left<L, R>(value: L): Either<L, R> {
+  return { tag: "left", value }
+}
+
+export function right<L, R>(value: R): Either<L, R> {
+  return { tag: "right", value }
 }
 
 export function BoxSetoid<A>(): Setoid<Box<A>> {
@@ -30,7 +50,7 @@ export function BoxArbitrary<A>(arb: jv.Arbitrary<A>): jv.Arbitrary<Box<A>> {
 }
 
 export class BoxFunctor implements Functor<"box"> {
-  map<A, B>(fa: HK<"box", A>, f: (a: A) => B) {
+  map<A, B>(f: (a: A) => B, fa: HK<"box", A>) {
     return new Box(f((fa as Box<A>).value))
   }
 }
@@ -48,7 +68,24 @@ export class BoxApplicative extends BoxApply implements Applicative<"box"> {
 }
 
 export class BoxChain extends BoxApply implements Chain<"box"> {
-  chain<A, B>(fa: HK<"box", A>, f: (a: A) => HK<"box", B>) {
+  chain<A, B>(f: (a: A) => HK<"box", B>, fa: HK<"box", A>) {
     return f((fa as Box<A>).value)
   }
+}
+
+export class BoxChainRec extends BoxChain implements ChainRec<"box"> {
+  chainRec<A, B>(
+    f: (next: (a: A) => Either<A, B>, done: (b: B) => Either<A, B>, a: A) => HK<"box", Either<A, B>>,
+    a: A) {
+
+    let cursor: Either<A, B> = left(a)
+    while (cursor.tag === "left") {
+      cursor = (f(left, right, cursor.value) as Box<Either<A, B>>).value
+    }
+    return new Box(cursor.value)
+  }
+}
+
+export class BoxMonad extends BoxChainRec implements Monad<"box"> {
+  of<A>(a: A) { return new Box(a) }
 }

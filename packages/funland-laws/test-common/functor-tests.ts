@@ -15,9 +15,10 @@ export function functorCheck<F, A, B, C>(
   genAtoB: jv.Arbitrary<(a: A) => B>,
   genBtoC: jv.Arbitrary<(b: B) => C>,
   check: <T>(e: Equiv<HK<F, T>>) => boolean,
-  F: Functor<F>) {
+  F: Functor<F>,
+  lawsRef?: FunctorLaws<F>) {
 
-  const laws = new FunctorLaws<F>(F)
+  const laws = lawsRef || new FunctorLaws<F>(F)
 
   jv.property("functor.identity", genFA,
     fa => check(laws.identity(fa)))

@@ -22,11 +22,11 @@ export class FunctorLaws<F> {
   constructor(public readonly F: Functor<F>) {}
 
   identity<A>(fa: HK<F, A>): Equiv<HK<F, A>> {
-    return Equiv.of(this.F.map(fa, x => x), fa)
+    return Equiv.of(this.F.map(x => x, fa), fa)
   }
 
   composition<A, B, C>(fa: HK<F, A>, f: (a: B) => C, g: (a: A) => B) {
     const F = this.F
-    return Equiv.of(F.map(fa, x => f(g(x))), F.map(F.map(fa, g), f))
+    return Equiv.of(F.map(x => f(g(x)), fa), F.map(f, F.map(g, fa)))
   }
 }

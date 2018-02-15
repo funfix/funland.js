@@ -7,14 +7,14 @@
  */
 
 import { Applicative } from "./applicative"
-import { Chain } from "./chain"
+import { ChainRec } from "./chain-rec"
 
 /**
  * The `Monad` type class.
  *
  * Allows composition of dependent effectful functions.
  *
- * This type-class must support the `Applicative` and `Chain`
+ * This type-class must support the `Applicative`, `Chain` and `ChainRec`
  * algebras and obey the following laws:
  *
  * 1. Left identity: `M.chain(f, M.of(a)) <-> f(a)`
@@ -30,4 +30,4 @@ import { Chain } from "./chain"
  * [static-land](https://github.com/rpominov/static-land/)
  * specifications.
  */
-export interface Monad<F> extends Applicative<F>, Chain<F> {}
+export interface Monad<F> extends Applicative<F>, ChainRec<F> {}

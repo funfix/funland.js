@@ -12,9 +12,10 @@ import { Equiv, SetoidLaws } from "../src"
 
 export function setoidCheck<A>(
   genA: jv.Arbitrary<A>,
-  F: Setoid<A>) {
+  F: Setoid<A>,
+  lawsRef?: SetoidLaws<A>) {
 
-  const laws = new SetoidLaws<A>(F)
+  const laws = lawsRef || new SetoidLaws<A>(F)
   const eq = (p: Equiv<boolean>) => p.lh === p.rh
 
   jv.property("setoid.reflexivity", genA,
