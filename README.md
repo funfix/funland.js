@@ -4,7 +4,7 @@
 [![Coverage Status](https://codecov.io/gh/funfix/funland/coverage.svg?branch=master)](https://codecov.io/gh/funfix/funland?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/funfix/funland.svg)](https://greenkeeper.io/)
 [![npm](https://img.shields.io/npm/v/funland.svg)](https://www.npmjs.com/package/funland)
-[![Join chat](https://badges.gitter.im/funfix/funland.svg)](https://gitter.im/funfix/funland?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join chat](https://badges.gitter.im/funfix/funfix.svg)](https://gitter.im/funfix/funfix?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Funland is a specification of common algebraic structures for JavaScript,
 [TypeScript](https://www.typescriptlang.org/) and [Flow](https://flow.org/),
