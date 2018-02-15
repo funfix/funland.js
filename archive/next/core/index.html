@@ -962,11 +962,57 @@ img { max-width: 100%; }
 				testing, so usage of <a href="https://github.com/jsverify/jsverify">jsverify</a> is
 			recommended, but not required.</p>
 			<h3 id="documentation">Documentation</h3>
-			<p>API docs are available:</p>
+			<p>API docs:</p>
 			<ul>
-				<li><a href="http://funland-js.org/api/core/">funland</a> (core)</li>
-				<li><a href="http://funland-js.org/api/laws/">funland-laws</a> (laws)</li>
+				<li><a href="./">funland</a> (core)</li>
+				<li><a href="../laws/">funland-laws</a> (laws)</li>
 			</ul>
+			<p>Exposed type classes:</p>
+			<ul>
+				<li><code>Setoid</code> (<a href="./interfaces/setoid.html">api</a> / <a href="../laws/classes/setoidlaws.html">laws</a> / <a href="https://github.com/rpominov/static-land/blob/v1.0.0/docs/spec.md#setoid">static-land</a>)</li>
+				<li><code>Functor</code> (<a href="./interfaces/functor.html">api</a> / <a href="../laws/classes/functorlaws.html">laws</a> / <a href="https://github.com/rpominov/static-land/blob/v1.0.0/docs/spec.md#functor">static-land</a>)</li>
+				<li><code>Apply</code> (<a href="./interfaces/apply.html">api</a> / <a href="../laws/classes/applylaws.html">laws</a> / <a href="https://github.com/rpominov/static-land/blob/v1.0.0/docs/spec.md#apply">static-land</a>)</li>
+				<li><code>Applicative</code> (<a href="./interfaces/applicative.html">api</a> / <a href="../laws/classes/applicativelaws.html">laws</a> / <a href="https://github.com/rpominov/static-land/blob/v1.0.0/docs/spec.md#applicative">static-land</a>)</li>
+				<li><code>Chain</code> (<a href="./interfaces/chain.html">api</a> / <a href="../laws/classes/chainlaws.html">laws</a> / <a href="https://github.com/rpominov/static-land/blob/v1.0.0/docs/spec.md#chain">static-land</a>)</li>
+				<li><code>ChainRec</code> (<a href="./interfaces/chainrec.html">api</a> / <a href="../laws/classes/chainreclaws.html">laws</a> / <a href="https://github.com/rpominov/static-land/blob/v1.0.0/docs/spec.md#chainrec">static-land</a>)</li>
+				<li><code>Monad</code> (<a href="./interfaces/monad.html">api</a> / <a href="../laws/classes/monadlaws.html">laws</a> / <a href="https://github.com/rpominov/static-land/blob/v1.0.0/docs/spec.md#monad">static-land</a>)</li>
+			</ul>
+			<h3 id="testing-the-included-type-class-laws">Testing the Included Type-class Laws</h3>
+			<p>The included laws are meant for usage with property-based testing,
+				so you&#39;ll need something like <a href="https://github.com/jsverify/jsverify">jsverify</a>
+			as a dependency.</p>
+			<pre><code>npm <span class="hljs-keyword">install</span> funland-laws <span class="hljs-comment">--save-dev</span>
+
+npm <span class="hljs-keyword">install</span> jsverify <span class="hljs-comment">--save-dev</span>
+
+# <span class="hljs-keyword">For</span> jsverify types (<span class="hljs-keyword">for</span> TypeScript):
+npm <span class="hljs-keyword">install</span> @types/jsverify <span class="hljs-comment">--save-dev</span>
+</code></pre><p>And then you can do something like this:</p>
+			<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> jv <span class="hljs-keyword">from</span> <span class="hljs-string">"jsverify"</span>
+<span class="hljs-keyword">import</span> { Setoid } <span class="hljs-keyword">from</span> <span class="hljs-string">"funland"</span>
+<span class="hljs-keyword">import</span> { Equiv, SetoidLaws } <span class="hljs-keyword">from</span> <span class="hljs-string">"funland-laws"</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setoidCheck</span>&lt;<span class="hljs-title">A</span>&gt;(<span class="hljs-params">
+  genA: jv.Arbitrary&lt;A&gt;,
+  F: Setoid&lt;A&gt;,
+  lawsRef?: SetoidLaws&lt;A&gt;</span>) </span>{
+
+  <span class="hljs-keyword">const</span> laws = lawsRef || <span class="hljs-keyword">new</span> SetoidLaws&lt;A&gt;(F)
+  <span class="hljs-keyword">const</span> eq = <span class="hljs-function">(<span class="hljs-params">p: Equiv&lt;<span class="hljs-built_in">boolean</span>&gt;</span>) =&gt;</span> p.lh === p.rh
+
+  jv.property(<span class="hljs-string">"setoid.reflexivity"</span>, genA,
+    <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> eq(laws.reflexivity(x)))
+
+  jv.property(<span class="hljs-string">"setoid.symmetry"</span>, genA, genA,
+    <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> eq(laws.symmetry(x, y)))
+
+  jv.property(<span class="hljs-string">"setoid.transitivity"</span>, genA, genA, genA,
+    <span class="hljs-function">(<span class="hljs-params">x, y, z</span>) =&gt;</span> eq(laws.transitivity(x, y, z)))
+}
+</code></pre>
+			<p>Such integration is currently not provided by Funland, however the
+				project&#39;s repository has code to use for inspiration, see
+			<a href="https://github.com/funfix/funland/tree/master/packages/funland-laws/test-common">github.com/.../funland-laws/test-common</a>.</p>
 			<h3 id="modules-umd-and-es-2015">Modules: UMD and ES 2015</h3>
 			<p>The library has been compiled using
 				<a href="https://github.com/umdjs/umd">UMD (Universal Module Definition)</a>,
@@ -1023,7 +1069,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/funfix/funland/blob/be98365/packages/funland/src/kinds.ts#L55">kinds.ts:55</a></li>
+						<li>Defined in <a href="https://github.com/funfix/funland/blob/32a2759/packages/funland/src/kinds.ts#L55">kinds.ts:55</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
