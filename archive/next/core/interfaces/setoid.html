@@ -956,13 +956,15 @@ img { max-width: 100%; }
 				<div class="lead">
 					<p>The <code>Setoid</code> type defines equality.</p>
 				</div>
+				<p>Inspired by <a href="https://hackage.haskell.org/package/base/docs/Data-Eq.html">Data.Eq</a>
+				from Haskell.</p>
 				<p>Instances must obey the following laws:</p>
 				<ol>
 					<li>Reflexivity: <code>S.equals(a, a) === true</code></li>
 					<li>Symmetry: <code>S.equals(a, b) === S.equals(b, a)</code></li>
 					<li>Transitivity: if <code>S.equals(a, b)</code> and <code>S.equals(b, c)</code>, then <code>S.equals(a, c)</code></li>
 				</ol>
-				<p>Equivalent with the <code>Setoid</code> specification in the
+				<p>Equivalent with the <code>Setoid</code> type-class in the
 				<a href="https://github.com/rpominov/static-land/" class="external">static-land</a> spec.</p>
 			</div>
 		</section>
@@ -1007,7 +1009,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/funfix/funland/blob/32a2759/packages/funland/src/setoid.ts#L22">setoid.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/funfix/funland/blob/f77e2f2/packages/funland/src/setoid.ts#L25">setoid.ts:25</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
