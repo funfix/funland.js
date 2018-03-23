@@ -20,7 +20,7 @@ import { Equiv } from "./equiv"
 export class SemigroupLaws<A> {
   constructor(public readonly F: Semigroup<A>) {}
 
-  associativity(x: A, y: A, z: A): Equiv<boolean> {
+  associativity(x: A, y: A, z: A): Equiv<A> {
     return Equiv.of(
       this.F.concat(this.F.concat(x, y), z),
       this.F.concat(x, this.F.concat(y, z)))
