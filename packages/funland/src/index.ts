@@ -7,6 +7,7 @@
  */
 
 export * from "./kinds"
+export * from "./semigroup"
 export * from "./setoid"
 export * from "./functor"
 export * from "./apply"

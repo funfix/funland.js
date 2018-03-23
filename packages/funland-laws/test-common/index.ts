@@ -6,6 +6,7 @@
  * See LICENSE file in the project root for full license information.
  */
 
+export * from "./semigroup-tests"
 export * from "./setoid-tests"
 export * from "./functor-tests"
 export * from "./apply-tests"
