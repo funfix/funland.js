@@ -6,6 +6,7 @@
  * See LICENSE file in the project root for full license information.
  */
 
+export * from "./semigroup"
 export * from "./equiv"
 export * from "./setoid"
 export * from "./functor"
