@@ -10,6 +10,7 @@ import * as jv from "jsverify"
 import {
   HK,
   Setoid,
+  Ord,
   Functor,
   Apply,
   Applicative,
@@ -36,9 +37,15 @@ export function right<L, R>(value: R): Either<L, R> {
   return { tag: "right", value }
 }
 
-export function BoxSetoid<A>(): Setoid<Box<A>> {
-  return {
-    equals: (x: Box<A>, y: Box<A>) => x.value === y.value
+export class BoxSetoid<A> implements Setoid<Box<A>> {
+  equals(x: Box<A>, y: Box<A>) {
+    return x.value === y.value
+  }
+}
+
+export class BoxOrd<A> extends BoxSetoid<A> implements Ord<Box<A>> {
+  lte(x: Box<A>, y: Box<A>) {
+    return x.value <= y.value
   }
 }
 

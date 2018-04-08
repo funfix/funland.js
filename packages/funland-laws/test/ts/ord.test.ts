@@ -7,9 +7,9 @@
  */
 
 import * as jv from "jsverify"
-import { setoidCheck } from "../../test-common"
-import { BoxArbitrary, BoxSetoid } from "./box"
+import { ordCheck } from "../../test-common"
+import { BoxArbitrary, BoxOrd } from "./box"
 
-describe("Setoid<Box>", () => {
-  setoidCheck(BoxArbitrary(jv.number), new BoxSetoid)
+describe("Ord<Box>", () => {
+  ordCheck(BoxArbitrary(jv.number), new BoxOrd)
 })

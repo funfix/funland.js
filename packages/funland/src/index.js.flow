@@ -11,6 +11,7 @@
 declare export * from "./kinds"
 declare export * from "./semigroup"
 declare export * from "./setoid"
+declare export * from "./ord"
 declare export * from "./functor"
 declare export * from "./apply"
 declare export * from "./applicative"

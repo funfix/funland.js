@@ -9,6 +9,7 @@
 export * from "./semigroup"
 export * from "./equiv"
 export * from "./setoid"
+export * from "./ord"
 export * from "./functor"
 export * from "./apply"
 export * from "./applicative"
