@@ -39,7 +39,7 @@ export class OrdLaws<A> extends SetoidLaws<A> {
 
   transitivity2(x: A, y: A, z: A): Equiv<boolean> {
     return Equiv.of(
-      this.F.lte(x, y) && this.F.lte(y, z),
-      this.F.lte(x, y) && this.F.lte(x, z))
+      !(this.F.lte(x, y) && this.F.lte(y, z)) || this.F.lte(x, z),
+      true)
   }
 }
