@@ -931,6 +931,9 @@ img { max-width: 100%; }
 			<a href="monadlaws.html" class="tsd-kind-icon">Monad<wbr>Laws</a>
 		</li>
 		<li class=" tsd-kind-class tsd-has-type-parameter">
+			<a href="ordlaws.html" class="tsd-kind-icon">Ord<wbr>Laws</a>
+		</li>
+		<li class=" tsd-kind-class tsd-has-type-parameter">
 			<a href="semigrouplaws.html" class="tsd-kind-icon">Semigroup<wbr>Laws</a>
 		</li>
 		<li class="current tsd-kind-class tsd-has-type-parameter">
@@ -943,13 +946,13 @@ img { max-width: 100%; }
 					<a href="setoidlaws.html#f" class="tsd-kind-icon">F</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="setoidlaws.html#reflexivity" class="tsd-kind-icon">reflexivity</a>
+					<a href="setoidlaws.html#setoidreflexivity" class="tsd-kind-icon">setoid<wbr>Reflexivity</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="setoidlaws.html#symmetry" class="tsd-kind-icon">symmetry</a>
+					<a href="setoidlaws.html#setoidsymmetry" class="tsd-kind-icon">setoid<wbr>Symmetry</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="setoidlaws.html#transitivity" class="tsd-kind-icon">transitivity</a>
+					<a href="setoidlaws.html#setoidtransitivity" class="tsd-kind-icon">setoid<wbr>Transitivity</a>
 				</li>
 			</ul>
 		</li>
@@ -984,6 +987,11 @@ img { max-width: 100%; }
 			<ul class="tsd-hierarchy">
 				<li>
 					<span class="target">SetoidLaws</span>
+					<ul class="tsd-hierarchy">
+						<li>
+							<a href="ordlaws.html" class="tsd-signature-type">OrdLaws</a>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</section>
@@ -1006,9 +1014,9 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="setoidlaws.html#reflexivity" class="tsd-kind-icon">reflexivity</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="setoidlaws.html#symmetry" class="tsd-kind-icon">symmetry</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="setoidlaws.html#transitivity" class="tsd-kind-icon">transitivity</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="setoidlaws.html#setoidreflexivity" class="tsd-kind-icon">setoid<wbr>Reflexivity</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="setoidlaws.html#setoidsymmetry" class="tsd-kind-icon">setoid<wbr>Symmetry</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="setoidlaws.html#setoidtransitivity" class="tsd-kind-icon">setoid<wbr>Transitivity</a></li>
 						</ul>
 					</section>
 				</div>
@@ -1026,7 +1034,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/funfix/funland/blob/e6b515c/packages/funland-laws/src/setoid.ts#L22">setoid.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/funfix/funland/blob/729c9d9/packages/funland-laws/src/setoid.ts#L22">setoid.ts:22</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1048,7 +1056,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">F<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Setoid</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/funfix/funland/blob/e6b515c/packages/funland-laws/src/setoid.ts#L23">setoid.ts:23</a></li>
+						<li>Defined in <a href="https://github.com/funfix/funland/blob/729c9d9/packages/funland-laws/src/setoid.ts#L23">setoid.ts:23</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1056,16 +1064,16 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Methods</h2>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="reflexivity" class="tsd-anchor"></a>
-				<h3>reflexivity</h3>
+				<a name="setoidreflexivity" class="tsd-anchor"></a>
+				<h3>setoid<wbr>Reflexivity</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">reflexivity<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="equiv.html" class="tsd-signature-type">Equiv</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">setoid<wbr>Reflexivity<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="equiv.html" class="tsd-signature-type">Equiv</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/funfix/funland/blob/e6b515c/packages/funland-laws/src/setoid.ts#L25">setoid.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/funfix/funland/blob/729c9d9/packages/funland-laws/src/setoid.ts#L25">setoid.ts:25</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1079,16 +1087,16 @@ img { max-width: 100%; }
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="symmetry" class="tsd-anchor"></a>
-				<h3>symmetry</h3>
+				<a name="setoidsymmetry" class="tsd-anchor"></a>
+				<h3>setoid<wbr>Symmetry</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">symmetry<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="equiv.html" class="tsd-signature-type">Equiv</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">setoid<wbr>Symmetry<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="equiv.html" class="tsd-signature-type">Equiv</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/funfix/funland/blob/e6b515c/packages/funland-laws/src/setoid.ts#L29">setoid.ts:29</a></li>
+								<li>Defined in <a href="https://github.com/funfix/funland/blob/729c9d9/packages/funland-laws/src/setoid.ts#L29">setoid.ts:29</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1105,16 +1113,16 @@ img { max-width: 100%; }
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="transitivity" class="tsd-anchor"></a>
-				<h3>transitivity</h3>
+				<a name="setoidtransitivity" class="tsd-anchor"></a>
+				<h3>setoid<wbr>Transitivity</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">transitivity<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span>, z<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="equiv.html" class="tsd-signature-type">Equiv</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">setoid<wbr>Transitivity<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span>, z<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="equiv.html" class="tsd-signature-type">Equiv</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/funfix/funland/blob/e6b515c/packages/funland-laws/src/setoid.ts#L33">setoid.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/funfix/funland/blob/729c9d9/packages/funland-laws/src/setoid.ts#L33">setoid.ts:33</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
