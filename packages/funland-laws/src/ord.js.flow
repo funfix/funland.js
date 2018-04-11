@@ -16,7 +16,7 @@ declare export class OrdLaws<A> extends SetoidLaws<A> {
   +F: Ord<A>;
 
   constructor(F: Ord<A>): OrdLaws<A>;
-  totality(x: A, y: A): Equiv<boolean>;
-  antisymmetry(x: A, y: A): Equiv<boolean>;
-  transitivity2(x: A, y: A, z: A): Equiv<boolean>;
+  ordTotality(x: A, y: A): Equiv<boolean>;
+  ordAntisymmetry(x: A, y: A): Equiv<boolean>;
+  ordTransitivity(x: A, y: A, z: A): Equiv<boolean>;
 }

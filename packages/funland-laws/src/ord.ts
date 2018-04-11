@@ -25,19 +25,19 @@ export class OrdLaws<A> extends SetoidLaws<A> {
     super(F)
   }
 
-  totality(x: A, y: A): Equiv<boolean> {
+  ordTotality(x: A, y: A): Equiv<boolean> {
     return Equiv.of(
       this.F.lte(x, y) || this.F.lte(y, x),
       true)
   }
 
-  antisymmetry(x: A, y: A): Equiv<boolean> {
+  ordAntisymmetry(x: A, y: A): Equiv<boolean> {
     return Equiv.of(
       this.F.lte(x, y) && this.F.lte(y, x),
       this.F.equals(x, y))
   }
 
-  transitivity2(x: A, y: A, z: A): Equiv<boolean> {
+  ordTransitivity(x: A, y: A, z: A): Equiv<boolean> {
     return Equiv.of(
       !(this.F.lte(x, y) && this.F.lte(y, z)) || this.F.lte(x, z),
       true)

@@ -25,11 +25,11 @@ export function ordCheck<A>(
   const eq = (p: Equiv<boolean>) => p.lh === p.rh
 
   jv.property("ord.totality", genA, genA,
-    (x, y) => eq(laws.totality(x, y)))
+    (x, y) => eq(laws.ordTotality(x, y)))
 
   jv.property("ord.antisymmetry", genA, genA,
-    (x, y) => eq(laws.antisymmetry(x, y)))
+    (x, y) => eq(laws.ordAntisymmetry(x, y)))
 
   jv.property("ord.transitivity", genA, genA, genA,
-    (x, y, z) => eq(laws.transitivity2(x, y, z)))
+    (x, y, z) => eq(laws.ordTransitivity(x, y, z)))
 }
