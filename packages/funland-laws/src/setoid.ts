@@ -22,15 +22,15 @@ import { Equiv } from "./equiv"
 export class SetoidLaws<A> {
   constructor(public readonly F: Setoid<A>) {}
 
-  reflexivity(a: A): Equiv<boolean> {
+  setoidReflexivity(a: A): Equiv<boolean> {
     return Equiv.of(this.F.equals(a, a), true)
   }
 
-  symmetry(x: A, y: A): Equiv<boolean> {
+  setoidSymmetry(x: A, y: A): Equiv<boolean> {
     return Equiv.of(this.F.equals(x, y), this.F.equals(y, x))
   }
 
-  transitivity(x: A, y: A, z: A): Equiv<boolean> {
+  setoidTransitivity(x: A, y: A, z: A): Equiv<boolean> {
     return Equiv.of(
       this.F.equals(x, y) && this.F.equals(y, z),
       this.F.equals(x, y) && this.F.equals(x, z))

@@ -1,0 +1,22 @@
+/*!
+ * Copyright (c) 2018 by The Funland Project Developers.
+ * Some rights reserved.
+ *
+ * Licensed under the MIT License.
+ * See LICENSE file in the project root for full license information.
+ */
+
+/* @flow */
+
+import { Ord } from "funland"
+import { Equiv } from "./equiv"
+import { SetoidLaws } from "./setoid"
+
+declare export class OrdLaws<A> extends SetoidLaws<A> {
+  +F: Ord<A>;
+
+  constructor(F: Ord<A>): OrdLaws<A>;
+  ordTotality(x: A, y: A): Equiv<boolean>;
+  ordAntisymmetry(x: A, y: A): Equiv<boolean>;
+  ordTransitivity(x: A, y: A, z: A): Equiv<boolean>;
+}

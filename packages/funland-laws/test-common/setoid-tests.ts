@@ -19,11 +19,11 @@ export function setoidCheck<A>(
   const eq = (p: Equiv<boolean>) => p.lh === p.rh
 
   jv.property("setoid.reflexivity", genA,
-    x => eq(laws.reflexivity(x)))
+    x => eq(laws.setoidReflexivity(x)))
 
   jv.property("setoid.symmetry", genA, genA,
-    (x, y) => eq(laws.symmetry(x, y)))
+    (x, y) => eq(laws.setoidSymmetry(x, y)))
 
   jv.property("setoid.transitivity", genA, genA, genA,
-    (x, y, z) => eq(laws.transitivity(x, y, z)))
+    (x, y, z) => eq(laws.setoidTransitivity(x, y, z)))
 }

@@ -15,7 +15,7 @@ declare export class SetoidLaws<A> {
   +F: Setoid<A>;
 
   constructor(F: Setoid<A>): SetoidLaws<A>;
-  reflexivity(x: A, y: A): Equiv<boolean>;
-  symmetry(x: A, y: A): Equiv<boolean>;
-  transitivity(x: A, y: A, z: A): Equiv<boolean>;
+  setoidReflexivity(x: A, y: A): Equiv<boolean>;
+  setoidSymmetry(x: A, y: A): Equiv<boolean>;
+  setoidTransitivity(x: A, y: A, z: A): Equiv<boolean>;
 }
