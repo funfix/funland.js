@@ -27,7 +27,7 @@
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
     "flow-bin": "^0.65.0",
-    "fs-extra": "^5.0.0",
+    "fs-extra": "^6.0.0",
     "husky": "^0.14.3",
     "jsverify": "^0.8.2",
     "lerna": "^2.8.0",
