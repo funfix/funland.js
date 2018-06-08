@@ -34,18 +34,18 @@ recommended, but not required.
 
 API docs:
 
-- [funland](https://funland-js.org/api/core/) (core)
-- [funland-laws](https://funland-js.org/api/laws/) (laws)
+- [funland](https://funland.funfix.org/api/core/) (core)
+- [funland-laws](https://funland.funfix.org/api/laws/) (laws)
 
 Exposed type classes:
 
-- `Setoid` ([api](https://funland-js.org/api/core/interfaces/setoid.html) / [laws](https://funland-js.org/api/laws/classes/setoidlaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#setoid))
-- `Functor` ([api](https://funland-js.org/api/core/interfaces/functor.html) / [laws](https://funland-js.org/api/laws/classes/functorlaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#functor))
-- `Apply` ([api](https://funland-js.org/api/core/interfaces/apply.html) / [laws](https://funland-js.org/api/laws/classes/applylaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#apply))
-- `Applicative` ([api](https://funland-js.org/api/core/interfaces/applicative.html) / [laws](https://funland-js.org/api/laws/classes/applicativelaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#applicative))
-- `Chain` ([api](https://funland-js.org/api/core/interfaces/chain.html) / [laws](https://funland-js.org/api/laws/classes/chainlaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#chain))
-- `ChainRec` ([api](https://funland-js.org/api/core/interfaces/chainrec.html) / [laws](https://funland-js.org/api/laws/classes/chainreclaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#chainrec))
-- `Monad` ([api](https://funland-js.org/api/core/interfaces/monad.html) / [laws](https://funland-js.org/api/laws/classes/monadlaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#monad))
+- `Setoid` ([api](https://funland.funfix.org/api/core/interfaces/setoid.html) / [laws](https://funland.funfix.org/api/laws/classes/setoidlaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#setoid))
+- `Functor` ([api](https://funland.funfix.org/api/core/interfaces/functor.html) / [laws](https://funland.funfix.org/api/laws/classes/functorlaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#functor))
+- `Apply` ([api](https://funland.funfix.org/api/core/interfaces/apply.html) / [laws](https://funland.funfix.org/api/laws/classes/applylaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#apply))
+- `Applicative` ([api](https://funland.funfix.org/api/core/interfaces/applicative.html) / [laws](https://funland.funfix.org/api/laws/classes/applicativelaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#applicative))
+- `Chain` ([api](https://funland.funfix.org/api/core/interfaces/chain.html) / [laws](https://funland.funfix.org/api/laws/classes/chainlaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#chain))
+- `ChainRec` ([api](https://funland.funfix.org/api/core/interfaces/chainrec.html) / [laws](https://funland.funfix.org/api/laws/classes/chainreclaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#chainrec))
+- `Monad` ([api](https://funland.funfix.org/api/core/interfaces/monad.html) / [laws](https://funland.funfix.org/api/laws/classes/monadlaws.html) / [static-land](https://github.com/rpominov/static-land/blob/master/docs/spec.md#monad))
 
 ### Testing the Included Type-class Laws
 
