@@ -35,7 +35,7 @@
     "nyc": "^11.2.1",
     "rimraf": "^2.6.1",
     "rollup": "^0.56.0",
-    "rollup-plugin-babel": "^3.0.0",
+    "rollup-plugin-babel": "^4.0.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
