@@ -52,14 +52,14 @@ export class MonadLaws<F> extends ApplicativeLaws<F> implements ChainRecLaws<F> 
 
   // Mixed-in from ChainLaws
   chainAssociativity<A, B, C>(fa: HK<F, A>, f: (a: A) => HK<F, B>, g: (b: B) => HK<F, C>): Equiv<HK<F, C>> {
-    return ChainRecLaws.prototype.chainAssociativity.call(this, fa, f, g)
+    return ChainRecLaws.prototype.chainAssociativity.call(this, fa as any, f as any, g as any) as any
   }
   // Mixed-in from ChainLaws
   chainConsistentApply<A, B>(ff: HK<F, (a: A) => B>, fa: HK<F, A>): Equiv<HK<F, B>> {
-    return ChainRecLaws.prototype.chainConsistentApply.call(this, ff, fa)
+    return ChainRecLaws.prototype.chainConsistentApply.call(this, ff as any, fa as any) as any
   }
   // Mixed-in from ChainRecLaws
   chainRecConsistency<A>(a: A, f: (a: A) => HK<F, A>): Equiv<HK<F, A>> {
-    return ChainRecLaws.prototype.chainRecConsistency.call(this, a, f)
+    return ChainRecLaws.prototype.chainRecConsistency.call(this, a as any, f as any) as any
   }
 }

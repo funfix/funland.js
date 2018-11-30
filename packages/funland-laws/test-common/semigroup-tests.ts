@@ -13,10 +13,10 @@ import { Equiv, SemigroupLaws } from "../src"
 export function semigroupCheck<A>(
   genA: jv.Arbitrary<A>,
   F: Semigroup<A>,
-  lawsRef?: Semigroup<A>) {
+  lawsRef?: SemigroupLaws<A>) {
 
   const laws = lawsRef || new SemigroupLaws<A>(F)
-  const eq = (p: Equiv<boolean>) => p.lh === p.rh
+  const eq = (p: Equiv<A>) => p.lh === p.rh
 
   jv.property("semigroup.associativity", genA, genA, genA,
     (x, y, z) => eq(laws.associativity(x, y, z)))
