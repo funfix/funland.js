@@ -20,8 +20,8 @@ import {
 } from "funland"
 
 export class Box<A> implements HK<"box", A> {
-  readonly _URI: "box"
-  readonly _A: A
+  readonly _URI!: "box"
+  readonly _A!: A
   constructor(public readonly value: A) {}
 }
 

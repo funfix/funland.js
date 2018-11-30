@@ -1,7 +1,6 @@
 {
   "presets": [
-    ["es2015-rollup"],
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
         "browsers": ["last 2 versions", "safari >= 7"],
         "node": true
