@@ -12,6 +12,7 @@ before_script:
 script:
 - npm run build && npm run test:prod
 after_success:
+- 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
 - "./scripts/upload-coverage.sh"
 - "./scripts/npm-publish.js"
 - "./scripts/gh-pages-publish.js"
