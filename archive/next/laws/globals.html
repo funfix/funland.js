@@ -954,10 +954,8 @@ img { max-width: 100%; }
 			<h2 id="usage">Usage</h2>
 			<p>For the TypeScript / Flow types, which are very light
 			(no accompanying JavaScript code, just types):</p>
-			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save funland</span>
-</code></pre><p>For the laws:</p>
-			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save funland-laws</span>
-</code></pre><p>Usage of laws mostly makes sense in tests, being built for property-based
+			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save funland</span></code></pre><p>For the laws:</p>
+			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save funland-laws</span></code></pre><p>Usage of laws mostly makes sense in tests, being built for property-based
 				testing, so usage of <a href="https://github.com/jsverify/jsverify">jsverify</a> is
 			recommended, but not required.</p>
 			<h3 id="documentation">Documentation</h3>
@@ -981,7 +979,7 @@ img { max-width: 100%; }
 				so you&#39;ll need something like <a href="https://github.com/jsverify/jsverify">jsverify</a>
 			as a dependency.</p>
 			<p>And then you can do something like this:</p>
-			<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> jv <span class="hljs-keyword">from</span> <span class="hljs-string">"jsverify"</span>
+			<pre><code class="language-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> jv <span class="hljs-keyword">from</span> <span class="hljs-string">"jsverify"</span>
 <span class="hljs-keyword">import</span> { Setoid } <span class="hljs-keyword">from</span> <span class="hljs-string">"funland"</span>
 <span class="hljs-keyword">import</span> { Equiv, SetoidLaws } <span class="hljs-keyword">from</span> <span class="hljs-string">"funland-laws"</span>
 
@@ -1001,8 +999,7 @@ img { max-width: 100%; }
 
   jv.property(<span class="hljs-string">"setoid.transitivity"</span>, genA, genA, genA,
     <span class="hljs-function">(<span class="hljs-params">x, y, z</span>) =&gt;</span> eq(laws.transitivity(x, y, z)))
-}
-</code></pre>
+}</code></pre>
 			<p>Such integration is currently not provided by Funland, however the
 				project&#39;s repository has code to use for inspiration, see
 			<a href="https://github.com/funfix/funland/tree/master/packages/funland-laws/test-common">github.com/.../funland-laws/test-common</a>.</p>

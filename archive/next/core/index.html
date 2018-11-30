@@ -961,10 +961,8 @@ img { max-width: 100%; }
 			<h2 id="usage">Usage</h2>
 			<p>For the TypeScript / Flow types, which are very light
 			(no accompanying JavaScript code, just types):</p>
-			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save funland</span>
-</code></pre><p>For the laws:</p>
-			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save funland-laws</span>
-</code></pre><p>Usage of laws mostly makes sense in tests, being built for property-based
+			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save funland</span></code></pre><p>For the laws:</p>
+			<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save funland-laws</span></code></pre><p>Usage of laws mostly makes sense in tests, being built for property-based
 				testing, so usage of <a href="https://github.com/jsverify/jsverify">jsverify</a> is
 			recommended, but not required.</p>
 			<h3 id="documentation">Documentation</h3>
@@ -988,7 +986,7 @@ img { max-width: 100%; }
 				so you&#39;ll need something like <a href="https://github.com/jsverify/jsverify">jsverify</a>
 			as a dependency.</p>
 			<p>And then you can do something like this:</p>
-			<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> jv <span class="hljs-keyword">from</span> <span class="hljs-string">"jsverify"</span>
+			<pre><code class="language-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> jv <span class="hljs-keyword">from</span> <span class="hljs-string">"jsverify"</span>
 <span class="hljs-keyword">import</span> { Setoid } <span class="hljs-keyword">from</span> <span class="hljs-string">"funland"</span>
 <span class="hljs-keyword">import</span> { Equiv, SetoidLaws } <span class="hljs-keyword">from</span> <span class="hljs-string">"funland-laws"</span>
 
@@ -1008,8 +1006,7 @@ img { max-width: 100%; }
 
   jv.property(<span class="hljs-string">"setoid.transitivity"</span>, genA, genA, genA,
     <span class="hljs-function">(<span class="hljs-params">x, y, z</span>) =&gt;</span> eq(laws.transitivity(x, y, z)))
-}
-</code></pre>
+}</code></pre>
 			<p>Such integration is currently not provided by Funland, however the
 				project&#39;s repository has code to use for inspiration, see
 			<a href="https://github.com/funfix/funland/tree/master/packages/funland-laws/test-common">github.com/.../funland-laws/test-common</a>.</p>
@@ -1071,7 +1068,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/funfix/funland/blob/729c9d9/packages/funland/src/kinds.ts#L55">kinds.ts:55</a></li>
+						<li>Defined in <a href="https://github.com/funfix/funland/blob/7f0da26/packages/funland/src/kinds.ts#L55">kinds.ts:55</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1087,7 +1084,7 @@ img { max-width: 100%; }
 						specify a <code>_funErasure</code> (static) member as a property, to help the compiler
 					infer type <code>T</code>.</p>
 					<p>Example:</p>
-					<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> NumBox { <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> num: <span class="hljs-built_in">number</span></span>) {} }
+					<pre><code class="language-typescript"><span class="hljs-keyword">class</span> NumBox { <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> num: <span class="hljs-built_in">number</span></span>) {} }
 <span class="hljs-keyword">class</span> GenBox&lt;A&gt; { <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> a: A</span>) {} }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDefault</span>&lt;<span class="hljs-title">F</span>&gt;(<span class="hljs-params">ref: Constructor&lt;F&gt;</span>): <span class="hljs-title">Option</span>&lt;<span class="hljs-title">F</span>&gt; </span>{
@@ -1099,10 +1096,9 @@ img { max-width: 100%; }
 (GenBox <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>)._default = <span class="hljs-keyword">new</span> GenBox(<span class="hljs-string">"value"</span>)
 
 <span class="hljs-keyword">const</span> r1: Option&lt;NumBox&gt; = getDefault(NumBox)
-<span class="hljs-keyword">const</span> r2: Option&lt;GenBox&lt;<span class="hljs-built_in">any</span>&gt;&gt; = getDefault(GenBox)
-</code></pre>
+<span class="hljs-keyword">const</span> r2: Option&lt;GenBox&lt;<span class="hljs-built_in">any</span>&gt;&gt; = getDefault(GenBox)</code></pre>
 					<p>And for classes with a private constructor:</p>
-					<pre><code class="lang-typescript"><span class="hljs-keyword">class</span> PrivateBox&lt;A&gt; {
+					<pre><code class="language-typescript"><span class="hljs-keyword">class</span> PrivateBox&lt;A&gt; {
   <span class="hljs-keyword">private</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> a: A</span>) {}
 
   <span class="hljs-keyword">static</span> _funErasure: PrivateBox&lt;<span class="hljs-built_in">any</span>&gt; <span class="hljs-comment">// leaving undefined</span>
@@ -1111,8 +1107,7 @@ img { max-width: 100%; }
 <span class="hljs-keyword">const</span> F = PrivateBox <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>
 F._default = <span class="hljs-keyword">new</span> F(<span class="hljs-string">"hello"</span>)
 
-<span class="hljs-keyword">const</span> r: Option&lt;PrivateBox&lt;<span class="hljs-built_in">any</span>&gt;&gt; = getDefault(NumBox)
-</code></pre>
+<span class="hljs-keyword">const</span> r: Option&lt;PrivateBox&lt;<span class="hljs-built_in">any</span>&gt;&gt; = getDefault(NumBox)</code></pre>
 				</div>
 			</section>
 		</section>
