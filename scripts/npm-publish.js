@@ -34,4 +34,8 @@ if (!version) {
 console.info(`Version detected: ${version}`)
 process.chdir(path.join(path.dirname(process.argv[1]), ".."))
 
-exec(`lerna publish ${version} --no-git-reset --no-git-tag-version --no-push --yes --force-publish`)
+// For "lerna" version 3:
+// exec(`lerna publish ${version} --no-git-reset --no-git-tag-version --no-push --yes --force-publish`)
+
+// For "lerna" version 2:
+exec(`lerna publish --skip-git --yes --force-publish --repo-version ${version}`)
