@@ -3489,11 +3489,11 @@ ts-node@^7.0.1:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tsc-watch@^1.0.31:
-  version "1.0.31"
-  resolved "https://registry.yarnpkg.com/tsc-watch/-/tsc-watch-1.0.31.tgz#639fc7866a86abcdd3cf0836d5f1cd1d64dcd5e0"
+tsc-watch@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/tsc-watch/-/tsc-watch-2.0.0.tgz#21070195ae901841694bdb2eaf5925f19bde0337"
+  integrity sha512-rftOduLMWwGBm8gASOrktaPFzu/dnRXb52eGifGNM5YOuSRLqlqb6VD5IoAxMmatEfKxHVfGGiNnp+/8Y54CQA==
   dependencies:
-    chalk "^2.3.0"
     cross-spawn "^5.1.0"
     node-cleanup "^2.1.2"
     ps-tree "^1.2.0"
