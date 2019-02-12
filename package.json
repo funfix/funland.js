@@ -22,7 +22,7 @@
     "@babel/preset-env": "^7.1.6",
     "@types/lodash": "^4.14.118",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.12.10",
+    "@types/node": "^11.9.0",
     "commitizen": "^3.0.5",
     "cz-conventional-changelog": "^2.1.0",
     "flow-bin": "^0.87.0",
