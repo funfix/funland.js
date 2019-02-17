@@ -597,6 +597,11 @@ JSONStream@^1.0.4:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
 
+acorn@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.0.tgz#b0a3be31752c97a0f7013c5f4903b71a05db6818"
+  integrity sha512-MW/FjM+IvU9CgBzjO3UIPCE2pyEwUsoFl+VGdczOPEdxfGFjuKny/gN54mOuX7Qxmb9Rg9MCn2oKiSUeW+pjrw==
+
 add-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
@@ -3110,12 +3115,14 @@ rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.3:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
 
-rollup@^0.67.3:
-  version "0.67.3"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.67.3.tgz#55475b1b62c43220c3b4bd7edc5846233932f50b"
+rollup@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.2.0.tgz#4d487f542b16984955409585ff19585fe3cfd6cc"
+  integrity sha512-oHNv2NSX5y/rY6W8MuKW8BVQwpIfwfTNp4PJiQYR7cLcBYeR5wP0LsPqKNw3Heji6hYci5Nd53q/fVfTuNe3GA==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"
+    acorn "^6.1.0"
 
 run-async@^2.2.0:
   version "2.3.0"
